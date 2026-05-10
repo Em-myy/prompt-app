@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const NavBar = () => {
-  return <div></div>;
+  return <div>Still in the process of development</div>;
 };
 
 export default NavBar;
