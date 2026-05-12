@@ -42,7 +42,7 @@ const NavBar = () => {
           fill="#EA4335"
         />
       </svg>
-      Sign in with Google, STILL NEED SOME FIXING
+      Sign in with Google
     </button>
   );
 };
