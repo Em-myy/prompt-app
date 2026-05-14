@@ -22,7 +22,7 @@ const NavBar = () => {
   return (
     <button
       onClick={handleGoogleLogin}
-      className="flex items-center justify-center gap-3 w-full px-4 py-2 text-gray-700 hover:bg-gray-50 font-medium transition-colors"
+      className="flex flex-row items-center justify-center gap-3 w-full px-4 py-2 text-gray-700 hover:bg-gray-50 font-medium transition-colors"
     >
       <svg width="20" height="20" viewBox="0 0 24 24">
         <path
