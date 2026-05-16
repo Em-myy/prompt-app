@@ -1,6 +1,8 @@
 "use client";
 
+import GoogleButton from "@/components/GoogleButton";
 import { createClient } from "@/utils/supabase/client";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 type formType = {
@@ -10,6 +12,7 @@ type formType = {
 
 const LoginPage = () => {
   const supabase = createClient();
+  const router = useRouter();
 
   const [formData, setFormData] = useState({ email: "", password: "" });
 
@@ -22,11 +25,18 @@ const LoginPage = () => {
   const handleFormSubmit = async (
     event: React.ChangeEvent<HTMLFormElement>,
   ) => {
+    event.preventDefault();
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email: formData.email,
         password: formData.password,
       });
+      if (error) {
+        console.log(error.message);
+      }
+      router.push("/profile");
+
+      router.refresh();
     } catch (error) {
       console.log(error);
     }
@@ -36,7 +46,7 @@ const LoginPage = () => {
       <h1>Login Page</h1>
       <section>
         <div>
-          <form>
+          <form onSubmit={handleFormSubmit}>
             <div>
               <label>E-Mail: </label>
               <input
@@ -45,6 +55,7 @@ const LoginPage = () => {
                 value={formData.email}
                 required
                 onChange={handleFormChange}
+                className="bg-green-300"
               />
             </div>
             <div>
@@ -55,10 +66,15 @@ const LoginPage = () => {
                 value={formData.password}
                 required
                 onChange={handleFormChange}
+                className="bg-blue-400"
               />
             </div>
             <button type="submit">Login</button>
           </form>
+        </div>
+        <h2>Or</h2>
+        <div>
+          <GoogleButton />
         </div>
       </section>
     </main>

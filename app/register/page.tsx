@@ -1,5 +1,6 @@
 "use client";
 
+import GoogleButton from "@/components/GoogleButton";
 import { createClient } from "@/utils/supabase/client";
 import { useState } from "react";
 
@@ -37,6 +38,9 @@ const RegisterPage = () => {
           },
         },
       });
+      if (error) {
+        console.log(error.message);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -46,47 +50,53 @@ const RegisterPage = () => {
       <main>
         <h1>SIGN UP PAGE</h1>
         <section>
-          <form onSubmit={handleFormSubmit}>
-            <div className="flex flex-col gap-y-2">
-              <div>
-                <label>Username: </label>
-                <input
-                  type="text"
-                  placeholder="John Doe"
-                  name="username"
-                  value={formData.username}
-                  onChange={handleFormChange}
-                  required
-                  className="bg-amber-300"
-                />
+          <div>
+            <form onSubmit={handleFormSubmit}>
+              <div className="flex flex-col gap-y-2">
+                <div>
+                  <label>Username: </label>
+                  <input
+                    type="text"
+                    placeholder="John Doe"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleFormChange}
+                    required
+                    className="bg-amber-300"
+                  />
+                </div>
+                <div>
+                  <label>E-Mail: </label>
+                  <input
+                    type="email"
+                    placeholder="xyz@gmail.com"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleFormChange}
+                    required
+                    className="bg-amber-300"
+                  />
+                </div>
+                <div>
+                  <label>Password</label>
+                  <input
+                    type="password"
+                    placeholder="....."
+                    name="password"
+                    value={formData.password}
+                    onChange={handleFormChange}
+                    required
+                    className="bg-blue-400"
+                  />
+                </div>
               </div>
-              <div>
-                <label>E-Mail: </label>
-                <input
-                  type="email"
-                  placeholder="xyz@gmail.com"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleFormChange}
-                  required
-                  className="bg-amber-300"
-                />
-              </div>
-              <div>
-                <label>Password</label>
-                <input
-                  type="password"
-                  placeholder="....."
-                  name="password"
-                  value={formData.password}
-                  onChange={handleFormChange}
-                  required
-                  className="bg-blue-400"
-                />
-              </div>
-            </div>
-            <button type="submit">Sign Up</button>
-          </form>
+              <button type="submit">Sign Up</button>
+            </form>
+          </div>
+          <h2>Or</h2>
+          <div>
+            <GoogleButton />
+          </div>
         </section>
       </main>
     </>
