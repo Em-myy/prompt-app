@@ -4,6 +4,7 @@ import { createClient } from "@/utils/supabase/client";
 import { useState } from "react";
 
 type formType = {
+  username: string;
   email: string;
   password: string;
 };
@@ -12,6 +13,7 @@ const RegisterPage = () => {
   const supabase = createClient();
 
   const [formData, setFormData] = useState<formType>({
+    username: "",
     email: "",
     password: "",
   });
@@ -30,6 +32,9 @@ const RegisterPage = () => {
         password: formData.password,
         options: {
           emailRedirectTo: `${window.location.origin}/profile`,
+          data: {
+            username: formData.username,
+          },
         },
       });
     } catch (error) {
@@ -43,24 +48,42 @@ const RegisterPage = () => {
         <section>
           <form onSubmit={handleFormSubmit}>
             <div className="flex flex-col gap-y-2">
-              <input
-                type="email"
-                placeholder="xyz@gmail.com"
-                name="email"
-                value={formData.email}
-                onChange={handleFormChange}
-                required
-                className="bg-amber-300"
-              />
-              <input
-                type="password"
-                placeholder="....."
-                name="password"
-                value={formData.password}
-                onChange={handleFormChange}
-                required
-                className="bg-blue-400"
-              />
+              <div>
+                <label>Username: </label>
+                <input
+                  type="text"
+                  placeholder="John Doe"
+                  name="username"
+                  value={formData.username}
+                  onChange={handleFormChange}
+                  required
+                  className="bg-amber-300"
+                />
+              </div>
+              <div>
+                <label>E-Mail: </label>
+                <input
+                  type="email"
+                  placeholder="xyz@gmail.com"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleFormChange}
+                  required
+                  className="bg-amber-300"
+                />
+              </div>
+              <div>
+                <label>Password</label>
+                <input
+                  type="password"
+                  placeholder="....."
+                  name="password"
+                  value={formData.password}
+                  onChange={handleFormChange}
+                  required
+                  className="bg-blue-400"
+                />
+              </div>
             </div>
             <button type="submit">Sign Up</button>
           </form>
