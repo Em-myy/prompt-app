@@ -1,5 +1,5 @@
 const Feed = () => {
-  return <div>Feed</div>;
+  return <>feed</>;
 };
 
 export default Feed;
