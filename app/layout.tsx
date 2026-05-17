@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
-import Provider from "@/components/Provider";
+import { AuthProvider } from "@/context/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,8 +34,10 @@ export default function RootLayout({
           <div className="gradient" />
         </div>
         <main className="app">
-          <NavBar />
-          {children}
+          <AuthProvider>
+            <NavBar />
+            {children}
+          </AuthProvider>
         </main>
       </body>
     </html>
