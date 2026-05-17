@@ -1,6 +1,7 @@
 "use client";
 
 import { createClient } from "@/utils/supabase/client";
+import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext<any>(null);
@@ -9,9 +10,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    const supabase = createClient();
+  const supabase = createClient();
+  const router = useRouter();
 
+  useEffect(() => {
     const getUser = async () => {
       const {
         data: { user },
@@ -30,8 +32,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     });
   }, []);
 
+  const handleLogout = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+
+      if (error) {
+        console.log(error.message);
+      }
+
+      router.push("/login");
+
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading }}>
+    <AuthContext.Provider value={{ user, loading, handleLogout }}>
       {children}
     </AuthContext.Provider>
   );
