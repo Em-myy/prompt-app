@@ -7,7 +7,7 @@ import logoImage from "../public/assets/images/logo.svg";
 import { useRouter } from "next/navigation";
 
 const NavBar = () => {
-  const { user, loading } = useAuth();
+  const { user, loading, handleLogout } = useAuth();
   const router = useRouter();
 
   const handleLogin = () => {
@@ -33,7 +33,11 @@ const NavBar = () => {
             <Link href="create-prompt" className="black_btn">
               Create Post
             </Link>
-            <button type="button" onClick={signout} className="outline_btn">
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="outline_btn"
+            >
               Sign Out
             </button>
 
