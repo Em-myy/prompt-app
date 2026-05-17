@@ -2,6 +2,7 @@
 
 import GoogleButton from "@/components/GoogleButton";
 import { createClient } from "@/utils/supabase/client";
+import Link from "next/link";
 import { useState } from "react";
 
 type formType = {
@@ -98,6 +99,10 @@ const RegisterPage = () => {
             <GoogleButton />
           </div>
         </section>
+        <div>
+          <p>If you have an account: </p>
+          <Link href="/login">Login</Link>
+        </div>
       </main>
     </>
   );

@@ -2,6 +2,7 @@
 
 import GoogleButton from "@/components/GoogleButton";
 import { createClient } from "@/utils/supabase/client";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -77,6 +78,10 @@ const LoginPage = () => {
           <GoogleButton />
         </div>
       </section>
+      <div>
+        <p>If you don't have an account then: </p>
+        <Link href="/register">Register</Link>
+      </div>
     </main>
   );
 };
