@@ -16,9 +16,7 @@ const ProfilePage = async () => {
   return (
     <main>
       <h1>Profile Page</h1>
-      <div>
-        <LogoutButton />
-      </div>
+      <div></div>
       <section>
         <p>
           You have successfullty logged in <span>{user.email}</span>
