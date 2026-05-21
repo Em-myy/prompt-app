@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         console.log(error.message);
       }
 
-      router.push("/login");
+      router.push("/");
 
       router.refresh();
     } catch (error) {
