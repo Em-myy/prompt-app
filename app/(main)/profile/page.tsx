@@ -1,24 +1,9 @@
-import LogoutButton from "@/components/LogoutButton";
-import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
+"use client";
+import { useAuth } from "@/context/AuthContext";
 
-const ProfilePage = async () => {
-  const supabase = await createClient();
+const ProfilePage = () => {
+  const { displayName } = useAuth();
 
-  const {
-    data: { user },
-    error,
-  } = await supabase.auth.getUser();
-
-  if (!user || error) {
-    redirect("/login");
-  }
-
-  const displayName =
-    user.user_metadata.display_name ||
-    user.user_metadata.full_name ||
-    user.user_metadata.username ||
-    user.email;
   return (
     <main>
       <h1>Profile Page</h1>
