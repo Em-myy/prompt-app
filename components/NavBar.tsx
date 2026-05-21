@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const NavBar = () => {
-  const { user, loading, handleLogout } = useAuth();
+  const { user, loading, handleLogout, avatarUrl, initial } = useAuth();
   const router = useRouter();
 
   const [toggleDropdown, setToggleDropdown] = useState<boolean>(false);
@@ -52,13 +52,18 @@ const NavBar = () => {
             </button>
 
             <Link href="/profile">
-              <Image
-                src={logoImage}
-                alt="Profile Image"
-                width={37}
-                height={37}
-                className="rounded-full"
-              />
+              {avatarUrl ? (
+                <img
+                  src={avatarUrl}
+                  alt="User avatar"
+                  width={37}
+                  height={37}
+                  className="rounded-full"
+                  referrerPolicy="no-referrer"
+                />
+              ) : (
+                <span>{initial}</span>
+              )}
             </Link>
           </div>
         ) : (
