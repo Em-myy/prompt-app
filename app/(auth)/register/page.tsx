@@ -28,23 +28,33 @@ const RegisterPage = () => {
     event: React.ChangeEvent<HTMLFormElement>,
   ) => {
     event.preventDefault();
-    try {
-      const { data, error } = await supabase.auth.signUp({
-        email: formData.email,
-        password: formData.password,
-        options: {
-          emailRedirectTo: `${window.location.origin}/profile`,
-          data: {
-            username: formData.username,
-          },
+
+    const { data, error } = await supabase.auth.signUp({
+      email: formData.email,
+      password: formData.password,
+      options: {
+        emailRedirectTo: `${window.location.origin}/profile`,
+        data: {
+          username: formData.username,
         },
-      });
-      if (error) {
-        console.log(error.message);
-      }
-    } catch (error) {
-      console.log(error);
+      },
+    });
+
+    if (error) {
+      console.error("Sign up error: ", error.message);
+      return;
     }
+
+    if (
+      data.user &&
+      data.user.identities &&
+      data.user.identities.length === 0
+    ) {
+      console.log("An account with this mail exists, please use another mail");
+      return;
+    }
+
+    console.log("Check your mail for the confirmation link");
   };
   return (
     <>
