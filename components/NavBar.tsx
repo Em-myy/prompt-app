@@ -78,14 +78,18 @@ const NavBar = () => {
       <div className="sm:hidden flex relative">
         {user ? (
           <div className="flex">
-            <Image
-              src={logoImage}
-              alt="Profile Image"
-              width={37}
-              height={37}
-              className="rounded-full"
-              onClick={() => setToggleDropdown((prev) => !prev)}
-            />
+            {avatarUrl ? (
+              <img
+                src={avatarUrl}
+                alt="User avatar"
+                width={37}
+                height={37}
+                className="rounded-full"
+                referrerPolicy="no-referrer"
+              />
+            ) : (
+              <span>{initial}</span>
+            )}
 
             {toggleDropdown && (
               <div className="dropdown">
