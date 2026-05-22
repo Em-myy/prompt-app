@@ -3,6 +3,7 @@
 import GoogleButton from "@/components/GoogleButton";
 import { createClient } from "@/utils/supabase/client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 type formType = {
@@ -13,6 +14,7 @@ type formType = {
 
 const RegisterPage = () => {
   const supabase = createClient();
+  const router = useRouter();
 
   const [formData, setFormData] = useState<formType>({
     username: "",
@@ -54,7 +56,7 @@ const RegisterPage = () => {
       return;
     }
 
-    console.log("Check your mail for the confirmation link");
+    router.push("/verify-email");
   };
   return (
     <>
