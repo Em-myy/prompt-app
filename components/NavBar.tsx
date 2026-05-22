@@ -23,7 +23,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="flex justify-between w-full mb-16 pt-3">
+    <nav className="flex justify-between md:justify-around w-screen mb-16 pt-3">
       <div className="mr-2">
         <Link href="/" className="flex gap-4 flex-center">
           <Image
