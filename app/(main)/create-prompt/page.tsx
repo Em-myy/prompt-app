@@ -1,5 +1,5 @@
 const CreatePrompt = () => {
-  return <div>Create Prompt another new</div>;
+  return <div>Create another new</div>;
 };
 
 export default CreatePrompt;
