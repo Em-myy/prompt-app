@@ -1,5 +1,5 @@
 const CreatePrompt = () => {
-  return <div>Create another spoilt new</div>;
+  return <div>Create another still fuxing new</div>;
 };
 
 export default CreatePrompt;
