@@ -1,5 +1,5 @@
 const CreatePrompt = () => {
-  return <div>Create another BIOS new</div>;
+  return <div>Create another spoilt new</div>;
 };
 
 export default CreatePrompt;
