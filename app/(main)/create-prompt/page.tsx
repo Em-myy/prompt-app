@@ -1,5 +1,5 @@
 const CreatePrompt = () => {
-  return <div>Fixed</div>;
+  return <div>Ready to start</div>;
 };
 
 export default CreatePrompt;
