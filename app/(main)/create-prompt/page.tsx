@@ -1,7 +1,7 @@
 const CreatePrompt = () => {
   return (
     <div>
-      Ready to start i need more IM COMING<h1> A little bit</h1>
+      Ready to start i need more IM COMING<h1> A little bit coming</h1>
     </div>
   );
 };
